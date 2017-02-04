@@ -10,8 +10,7 @@ RUN add-apt-repository ppa:saiarcot895/myppa && \
   apt-get -y install apt-fast && \
   apt-fast update
 
-RUN apt-fast install -y curl git wget unzip mono-complete mono-xsp4 python
+RUN apt-fast install -y curl git wget unzip mono-complete mono-xsp4 python && \
+  apt-fast clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN python -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/develop/scripts/get-platformio.py)"
-
-RUN apt-fast clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
